@@ -11,6 +11,8 @@ app.get('/', async (_req, res) => {
   try {
     const followers = await fetchFollowers(dxdaoUserId)
 
+    console.log(followers)
+
     const resBody = targetList.map((targetUser) => ({
       ...targetUser,
       follows: followers.data.find(
@@ -21,7 +23,8 @@ app.get('/', async (_req, res) => {
     }))
 
     res.json(resBody)
-  } catch (e) {
+  } catch (error) {
+    console.log(error)
     res.json({
       error: 'Unknown error',
     })

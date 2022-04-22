@@ -25,7 +25,7 @@ export async function fetchFollowers(userId: string): Promise<FollowersData> {
     const json = JSON.parse(content)
 
     if (dayjs().diff(json.expiresAt) < 0) {
-      return json.data
+      return json
     }
   } catch (e) {
     console.log(e)
